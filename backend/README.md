@@ -24,7 +24,6 @@ The final image does not composite a watermark.
 ## Local run
 
 ```bash
-cd backend
 cp .env.example .env
 npm install
 npm start
@@ -63,9 +62,11 @@ payload.
 
 ## Pterodactyl
 
-Use a Node.js 20+ egg. Upload `backend/` and install dependencies:
+Use a Node.js 20+ egg. Upload the complete archive so `index.js`,
+`package.json`, `backend/` and `mini-app/` are in `/home/container`.
 
 ```bash
+cp .env.example .env
 npm install --omit=dev
 npm start
 ```
@@ -73,4 +74,6 @@ npm start
 The server needs a persistent writable `storage/` directory. Configure the
 panel's startup command as `npm start`, expose the chosen port, and put the VPS
 HTTPS reverse proxy in front of it. `PUBLIC_BASE_URL` should be the public API
-URL; payment providers cannot call a private panel address.
+URL; payment providers cannot call a private panel address. The Mini App is
+served by the same process at `/mini-app/`, so its BotFather URL can be
+`https://YOUR_DOMAIN/mini-app/`.
