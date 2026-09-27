@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0d1117" />
+    <title>Avatar Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div>
+          <p class="eyebrow">AVA EDITOR</p>
+          <h1>Аватарка<br />с твоим ником</h1>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="step">01</p>
+            <h2>Загрузи изображение</h2>
+          </div>
+          <span class="hint">JPG или PNG</span>
+        </div>
+
+        <label class="upload-zone" id="uploadZone" for="imageInput">
+          <input
+            id="imageInput"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            hidden
+          />
+          <span class="upload-icon" aria-hidden="true">＋</span>
+          <span class="upload-title" id="uploadTitle">Выбрать фото</span>
+          <span class="upload-subtitle" id="uploadSubtitle">
+            Максимальный размер — 10 МБ
+          </span>
+        </label>
+
+        <div class="preview-wrap is-hidden" id="previewWrap">
+          <img id="previewImage" alt="Предпросмотр загруженной аватарки" />
+          <button class="remove-button" id="removeImage" type="button">
+            Удалить
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="step">02</p>
+            <h2>Напиши никнейм</h2>
+          </div>
+          <span class="hint" id="characterCounter">0/20</span>
+        </div>
+
+        <label class="input-label" for="nickname">Текст на аватарке</label>
+        <input
+          id="nickname"
+          class="nickname-input"
+          type="text"
+          maxlength="20"
+          autocomplete="off"
+          placeholder="Например, AVATAR"
+          spellcheck="false"
+        />
+        <p class="field-error is-hidden" id="nicknameError"></p>
+      </section>
+
+      <section class="order-summary">
+        <div>
+          <span class="summary-label">Одна аватарка</span>
+          <strong>$0.65</strong>
+        </div>
+        <span class="summary-note">Оплата через CryptoBot или Xrocket</span>
+      </section>
+
+      <button class="primary-button" id="payButton" type="button" disabled>
+        <span id="payButtonLabel">Загрузите фото и укажите ник</span>
+        <span class="button-spinner is-hidden" id="buttonSpinner"></span>
+      </button>
+
+      <p class="status-message" id="statusMessage" role="status"></p>
+      <p class="legal-note">
+        После оплаты генерация обычно занимает несколько минут. Результат
+        придёт в этот Telegram-бот.
+      </p>
+    </main>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
